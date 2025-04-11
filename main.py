@@ -52,7 +52,7 @@ def update_translation(a, b, c): # function that updates the opposite textbox wi
 
     if focus == morseEntry:#updates plane text
         morseText = morseVar.get()
-        plainTtext = morse_to_text(morseText)
+        plainTtext = morseToText(morseText)
         textVar.set(plainTtext)
     else:#default case, updates morse code
         plainTtext = textVar.get()

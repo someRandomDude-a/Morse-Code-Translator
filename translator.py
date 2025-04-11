@@ -34,17 +34,17 @@ Text = {
     '/': ' '
 }
 
-def morse_to_text(morse):
-    morse_words = morse.split(' / ')
-    decoded_message = ""
+def morseToText(morse):
+    words = morse.split(' / ')
+    message = ""
     
-    for word in morse_words:
-        morse_chars = word.split()
-        for char in morse_chars:
-            decoded_message += Text.get(char, '?')
-        decoded_message += " "
+    for word in words:
+        chars = word.strip().split()
+        for char in chars:
+            message += Text.get(char, '<?>')
+        message += " "
 
-    return decoded_message
+    return message
 
 
 def frequencyAnalysis(morse):
@@ -65,6 +65,11 @@ def textToMorse(text):
     text = text.upper()
     morse = ""
     for i in text:
-        morse = morse + morseCode.get(i)
+        if i in morseCode:
+            morse += morseCode[i]
+        elif i == '\n' or i == '\t':
+            morse += morseCode.get(' ', '/ ')  # treat as space
+        else:
+            morse += '<?> '
     return morse
  
