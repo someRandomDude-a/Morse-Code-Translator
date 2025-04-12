@@ -102,6 +102,8 @@ graphing.pack(pady=5)
 textVar.trace_add("write", update_translation)
 morseVar.trace_add("write", update_translation)
 
+copy_button=Button(root,text="📋copy",bg="yellow",fg="black",command=copyMorse)
+copy_button.place(x=280,y=135)
 
 
 root.mainloop()
