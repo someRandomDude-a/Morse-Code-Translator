@@ -18,7 +18,7 @@ def plotFrequency():
     morse = morseVar.get()
     data = frequencyAnalysis(morse)
 
-    if not data: #checks if the returned tupple actually has anything inside, if not just does not open a new window
+    if not data: #checks if the returned dictionary actually has anything inside, if not just does not open a new window
         return
 
     symbols = list(data.keys())
@@ -70,7 +70,7 @@ root.configure(bg='black')
 bg = PhotoImage(file = "background.png") 
 
 #drawing the background onto the canvas, using place to keep it behind the rest of the objects
-canvas1 = Canvas(root, width=400, height=300, highlightthickness=0)
+canvas1 = Canvas(root, width=400, height=300)
 canvas1.place(x=0, y=0, relwidth=1, relheight=1)
 canvas1.create_image(0, 0, image=bg, anchor="nw")
 
@@ -91,7 +91,7 @@ morseEntry = Entry(root, textvariable=morseVar)
 morseEntry.pack(pady=10)
 
 #play button calls the sound function to allow user to hear morse code
-enterButton = Button(root, text="▶️",justify="center", bg="yellow", fg="black", width=3, command=sound)
+enterButton = Button(root, text=" ▶️",justify="center", bg="yellow", fg="black", width=3, command=sound)
 enterButton.pack(pady=15)
 
 #graph button to open the frequency analyzer 
@@ -102,8 +102,10 @@ graphing.pack(pady=5)
 textVar.trace_add("write", update_translation)
 morseVar.trace_add("write", update_translation)
 
-copyButton=Button(root,text="📋copy",bg="yellow",fg="black",command=copyMorse)
-copyButton.place(x=280,y=135)
+copyButton1=Button(root,text="📋copy",bg="yellow",fg="black",command=copyMorse)
+copyButton1.place(x=280,y=130)
 
+copyButton2=Button(root,text="📋copy",bg="yellow",fg="black",command=copyText)
+copyButton2.place(x=280,y=50)
 
 root.mainloop()
